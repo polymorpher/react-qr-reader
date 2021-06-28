@@ -25,6 +25,7 @@ module.exports = class Reader extends Component {
     onImageLoad: PropTypes.func,
     delay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     facingMode: PropTypes.oneOf(['user', 'environment']),
+    deviceIdChooser: PropTypes.func,
     legacyMode: PropTypes.bool,
     resolution: PropTypes.number,
     showViewFinder: PropTypes.bool,
@@ -155,7 +156,7 @@ module.exports = class Reader extends Component {
 
     const vConstraintsPromise = (supported.facingMode || isFirefox)
       ? Promise.resolve(props.constraints || constraints)
-      : getDeviceId(facingMode).then(deviceId => Object.assign({}, { deviceId }, props.constraints))
+      : getDeviceId(facingMode, deviceIdChooser).then(deviceId => Object.assign({}, { deviceId }, props.constraints))
 
     vConstraintsPromise
       .then(video => navigator.mediaDevices.getUserMedia({ video }))
