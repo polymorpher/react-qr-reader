@@ -154,9 +154,7 @@ module.exports = class Reader extends Component {
       constraints.frameRate = { ideal: 25, min: 10 }
     }
 
-    const vConstraintsPromise = (supported.facingMode || isFirefox)
-      ? Promise.resolve(props.constraints || constraints)
-      : getDeviceId(facingMode, deviceIdChooser).then(deviceId => Object.assign({}, { deviceId }, props.constraints))
+    const vConstraintsPromise = getDeviceId(facingMode, deviceIdChooser).then(deviceId => Object.assign({}, { deviceId }, props.constraints))
 
     vConstraintsPromise
       .then(video => navigator.mediaDevices.getUserMedia({ video }))
