@@ -8,11 +8,15 @@
     "build": "gulp",
     "build:watch": "gulp watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "preinstall": "npx npm-force-resolutions"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JodusNodus/react-qr-reader.git"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "keywords": [
     "react",

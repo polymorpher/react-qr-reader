@@ -136,7 +136,7 @@ module.exports = class Reader extends Component {
     }
   }
   initiate(props = this.props) {
-    const { onError, facingMode } = props
+    const { onError, facingMode, deviceIdChooser } = props
 
     // Check browser facingMode constraint support
     // Firefox ignores facingMode or deviceId constraints
